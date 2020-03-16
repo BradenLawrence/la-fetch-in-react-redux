@@ -53,6 +53,19 @@ const handleNameChange = event => {
   }
 }
 
+const GET_GROCERIES_REQUEST = 'GET_GROCERIES_REQUEST'
+const getGroceriesRequest = () => {
+  return { type: GET_GROCERIES_REQUEST }
+}
+
+const GET_GROCERIES_SUCCESS = 'GET_GROCERIES_SUCCESS'
+const getGroceriesSuccess = (groceries) => {
+  return {
+    type: GET_GROCERIES_SUCCESS,
+    groceries
+  }
+}
+
 export {
   addNewGrocery,
   clearForm,
