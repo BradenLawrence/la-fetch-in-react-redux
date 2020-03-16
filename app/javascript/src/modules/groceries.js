@@ -77,6 +77,7 @@ const getGroceries = () => {
 
 export {
   addNewGrocery,
+  getGroceries,
   clearForm,
   groceries,
   handleNameChange
