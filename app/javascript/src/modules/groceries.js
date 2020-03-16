@@ -66,6 +66,15 @@ const getGroceriesSuccess = (groceries) => {
   }
 }
 
+const getGroceries = () => {
+  return (dispatch) => {
+    dispatch(getGroceriesRequest())
+    return fetch('api/v1/groceries')
+    .then(response => response.json())
+    .then(json => dispatch(getGroceriesSuccess(json)))
+  }
+}
+
 export {
   addNewGrocery,
   clearForm,
