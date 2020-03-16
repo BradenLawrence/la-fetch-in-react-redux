@@ -13,6 +13,14 @@ const groceries = (state = initialState, action) => {
       return {...state, name: ''}
     case HANDLE_NAME_CHANGE:
       return {...state, name: action.newName}
+    case GET_GROCERIES_REQUEST:
+      return {...state, isFetching: true}
+    case GET_GROCERIES_SUCCESS:
+      return {
+        ...state,
+        groceryList: action.groceries,
+        isFetching: false
+      }
     default:
       return state
   }
