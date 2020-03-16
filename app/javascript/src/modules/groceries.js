@@ -1,6 +1,7 @@
 const initialState = {
   groceryList: [],
-  name: ''
+  name: '',
+  isFetching: false
 }
 
 const groceries = (state = initialState, action) => {
