@@ -121,12 +121,39 @@ const getGroceries = () => {
   }
 }
 
+const postGrocery = (groceryData) => {
+  return (dispatch) => {
+    dispatch(postGroceryRequest())
+    return fetch('api/v1/groceries.json', {
+      method: 'POST',
+      body: JSON.stringify(groceryData),
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      }
+    })
+    .then(response => {
+      if(response.ok) {
+        return response.json()
+      } else {
+        dispatch(postGroceryFailure())
+        dispatch(displayAlertMessage('Oops!'))
+        return {error: 'Oops!'}
+      }
+    })
+    .then(grocery => {
+      if(!grocery.error) {
+        dispatch(postGrocerySuccess(grocery))
+      }
+    })
   }
 }
 
 export {
   addNewGrocery,
   getGroceries,
+  postGrocery,
   clearForm,
   groceries,
   handleNameChange
