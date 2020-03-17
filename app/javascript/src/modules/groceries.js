@@ -8,9 +8,6 @@ const initialState = {
 
 const groceries = (state = initialState, action) => {
   switch(action.type) {
-    case ADD_GROCERY:
-      const newGroceries = state.groceryList.concat(action.grocery)
-      return {...state, groceryList: newGroceries }
     case CLEAR_FORM:
       return {...state, name: ''}
     case HANDLE_NAME_CHANGE:
@@ -40,15 +37,6 @@ const groceries = (state = initialState, action) => {
       return {...state, isFetching: false}
     default:
       return state
-  }
-}
-
-const ADD_GROCERY = 'ADD_GROCERY'
-
-const addNewGrocery = grocery => {
-  return {
-    type: ADD_GROCERY,
-    grocery
   }
 }
 
@@ -151,7 +139,6 @@ const postGrocery = (groceryData) => {
 }
 
 export {
-  addNewGrocery,
   getGroceries,
   postGrocery,
   clearForm,
