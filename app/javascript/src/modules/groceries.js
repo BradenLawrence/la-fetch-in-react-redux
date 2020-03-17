@@ -25,6 +25,19 @@ const groceries = (state = initialState, action) => {
       }
     case GET_GROCERIES_FAILURE:
       return {...state, isFetching: false}
+    case POST_GROCERY_REQUEST:
+      return {...state, isFetching: true}
+    case POST_GROCERY_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        groceryList: [
+          ...state.groceryList,
+          action.grocery
+        ]
+      }
+    case POST_GROCERY_FAILURE:
+      return {...state, isFetching: false}
     default:
       return state
   }
@@ -72,6 +85,20 @@ const getGroceriesSuccess = (groceries) => {
 
 const GET_GROCERIES_FAILURE = 'GET_GROCERIES_FAILURE'
 const getGroceriesFailure = () => ({type: GET_GROCERIES_FAILURE})
+
+const POST_GROCERY_REQUEST = 'POST_GROCERY_REQUEST'
+const postGroceryRequest = () => ({type: POST_GROCERY_REQUEST})
+
+const POST_GROCERY_SUCCESS = 'POST_GROCERY_SUCCESS'
+const postGrocerySuccess = (grocery) => {
+  return {
+    type: POST_GROCERY_SUCCESS,
+    grocery
+  }
+}
+
+const POST_GROCERY_FAILURE = 'POST_GROCERY_FAILURE'
+const postGroceryFailure = () => ({type: POST_GROCERY_FAILURE})
 
 const getGroceries = () => {
   return (dispatch) => {
