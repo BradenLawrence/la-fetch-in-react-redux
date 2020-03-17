@@ -11,22 +11,10 @@ class GroceryFormContainer extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
-  // Below function calculates id of next item in place of a database
-  calculateNewId() {
-    if (this.props.groceryList.length === 0) {
-      return 1
-    } else {
-      const groceryIds = this.props.groceryList.map(grocery => grocery.id)
-      return Math.max(...groceryIds) + 1
-    }
-  }
-
   handleFormSubmit(event) {
     event.preventDefault()
-    const newId = this.calculateNewId()
 
     const newGrocery = {
-      id: newId,
       name: this.props.name
     }
 
