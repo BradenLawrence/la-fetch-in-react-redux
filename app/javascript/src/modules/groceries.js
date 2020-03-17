@@ -23,6 +23,8 @@ const groceries = (state = initialState, action) => {
         groceryList: action.groceries,
         isFetching: false
       }
+    case GET_GROCERIES_FAILURE:
+      return {...state, isFetching: false}
     default:
       return state
   }
@@ -67,6 +69,9 @@ const getGroceriesSuccess = (groceries) => {
     groceries
   }
 }
+
+const GET_GROCERIES_FAILURE = 'GET_GROCERIES_FAILURE'
+const getGroceriesFailure = () => ({type: GET_GROCERIES_FAILURE})
 
 const getGroceries = () => {
   return (dispatch) => {
