@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { clearForm, handleNameChange, addNewGrocery } from '../modules/groceries'
+import { clearForm, handleNameChange, postGrocery } from '../modules/groceries'
 
 import GroceryInputField from '../components/GroceryInputField'
 
@@ -57,7 +57,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNewGrocery: (grocery) => dispatch(addNewGrocery(grocery)),
+    addNewGrocery: (grocery) => dispatch(postGrocery(grocery)),
     handleNameChange: (event) => dispatch(handleNameChange(event)),
     clearForm: () => dispatch(clearForm())
   }
