@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getGroceries } from '../modules/groceries'
+import { closeAlertMessage } from '../modules/alertMessage'
 
-
+import AlertMessage from '../components/AlertMessage'
 import Grocery from '../components/Grocery'
 
 class GroceryListContainer extends Component {
@@ -28,22 +29,30 @@ class GroceryListContainer extends Component {
     })
 
     return (
-      <ul>
-        {groceries}
-      </ul>
+      <div>
+        <AlertMessage
+          message={this.props.alertMessage}
+          closeAlertMessage={this.props.closeAlertMessage}
+          />
+        <ul>
+          {groceries}
+        </ul>
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    groceryList: state.groceries.groceryList
+    groceryList: state.groceries.groceryList,
+    alertMessage: state.alertMessage.message
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getGroceries: () => dispatch(getGroceries())
+    getGroceries: () => dispatch(getGroceries()),
+    closeAlertMessage: () => dispatch(closeAlertMessage())
   }
 }
 
