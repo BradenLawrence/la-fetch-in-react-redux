@@ -41,7 +41,6 @@ const groceries = (state = initialState, action) => {
 }
 
 const CLEAR_FORM = 'CLEAR_FORM'
-
 const clearForm = () => {
   return {
     type: CLEAR_FORM
@@ -49,7 +48,6 @@ const clearForm = () => {
 }
 
 const HANDLE_NAME_CHANGE = 'HANDLE_NAME_CHANGE'
-
 const handleNameChange = event => {
   const newName = event.target.value
   return {
@@ -59,9 +57,7 @@ const handleNameChange = event => {
 }
 
 const GET_GROCERIES_REQUEST = 'GET_GROCERIES_REQUEST'
-const getGroceriesRequest = () => {
-  return { type: GET_GROCERIES_REQUEST }
-}
+const getGroceriesRequest = () => (({type: GET_GROCERIES_REQUEST}))
 
 const GET_GROCERIES_SUCCESS = 'GET_GROCERIES_SUCCESS'
 const getGroceriesSuccess = (groceries) => {
