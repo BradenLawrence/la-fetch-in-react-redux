@@ -1,3 +1,5 @@
+import { displayAlertMessage } from "./alertMessage"
+
 const initialState = {
   groceryList: [],
   name: '',
@@ -70,8 +72,23 @@ const getGroceries = () => {
   return (dispatch) => {
     dispatch(getGroceriesRequest())
     return fetch('api/v1/groceries')
-    .then(response => response.json())
-    .then(json => dispatch(getGroceriesSuccess(json)))
+    .then(response => {
+      if(response.ok) {
+        return response.json()
+      } else {
+        dispatch(getGroceriesFailure())
+        dispatch(displayAlertMessage("Oops!"))
+        return { error: "Oops!" }
+      }
+    })
+    .then(response => {
+      if(!response.error) {
+        dispatch(getGroceriesSuccess(response))
+      }
+    })
+  }
+}
+
   }
 }
 
